@@ -1,0 +1,186 @@
+I'll guide you through the complete Salesforce and Slack integration setup for the Koa Cars assignment. Here's a structured approach:
+
+Phase 1: Slack Sandbox Setup (Task 1)
+Step 1: Join Slack Developer Program
+Go to https://api.slack.com/developer-program
+Click "Join the Program"
+Fill out registration form with your email
+Check email for confirmation and click "Activate Developer Account"
+Sign in and accept Terms of Service
+Step 2: Provision Slack Sandbox
+In Slack Developer Dashboard, navigate to "Sandboxes"
+Click "Provision Sandbox with event code"
+Enter event code: SLACK360_AGENTFORCE
+Name your sandbox (e.g., "Koa Cars Workspace")
+Click "Provision Sandbox"
+Wait for provisioning to complete (appears in Sandboxes list)
+Click sandbox name and log in
+Click "Launch in Slack"
+Phase 2: Connect Salesforce and Slack (Task 2)
+Step 1: Install Slack Connector in Salesforce
+Sign in to your Salesforce trial org
+Go to this URL (replace YOUR_INSTANCE with your Salesforce instance):
+Select "Install for All Users"
+Check "Yes, grant access to these third-party web sites"
+Click "Install"
+Wait for installation to complete
+Step 2: Request Connection from Slack
+In your Slack workspace, click your organization name in sidebar
+Hover over "Tools & settings" → "Manage Salesforce Organizations"
+Click "Get Started" or "Connect Salesforce Org"
+Enter your Salesforce org URL (e.g., https://your-domain.develop.my.salesforce.com)
+Toggle "Automatic account mapping" OFF
+Click "Request Connection" → "OK"
+Step 3: Approve Request in Salesforce
+In Salesforce, click Setup (gear icon)
+In Quick Find, search: "Slack"
+Click "Manage Slack Connections"
+Check the box to agree to terms
+Click "Approve"
+Step 4: Activate Connection in Slack
+Back in Slack: Organization name → Tools & settings → Manage Salesforce Organizations
+Under "Connection Status", click "View Details"
+Click "Activate" button
+In modal, click "Activate" again
+Step 5: Add Users in Slack
+In connected Salesforce org settings in Slack, select "Users" tab
+Click "Add individually"
+Search for your name
+Select your user
+Click "Grant Access to 1 Person"
+Step 6: Sign In to Salesforce from Slack
+In Slack, click your profile icon → Preferences
+Select "Salesforce" tab
+Click "Sign In"
+Click "Continue to Salesforce"
+Enter Username and Password → "Log In"
+Click "Allow"
+Verify "Connected" status appears
+Phase 3: Explore Automotive Cloud Data (Preparation)
+Before Creating Agent
+In Salesforce, open App Launcher (9 dots icon)
+Search and open: "Service Console for Automotive"
+Click "Vehicles" tab
+Select vehicle: "2021 Electra Motors Megavolt GT"
+Review vehicle details
+Click current owner: "Oldacres's Electra of Dallas"
+Explore related lists:
+Contacts (drivers)
+Service Appointments (dates, status)
+Work Orders (status, priority)
+Familiarize yourself with record relationships
+Phase 4: Create Agentforce Agent (Task 3)
+Step 1: Enable and Create Agent
+In Salesforce Setup, search: "Agentforce"
+Click "Agents" under Agent Studio
+Click "New Agent"
+Select template: "Slack Customer Insights"
+Click "Next"
+Verify these topics are checked:
+General FAQ
+General CRM
+General Slack
+Create an Executive Brief in Slack
+Configure agent:
+Name: Koa Cars Agent
+API Name: Koa_Cars_Agent
+Description: (leave default)
+Role: (leave default)
+Company: Koa Cars is a modern automotive sales and service company that leverages Salesforce Automotive Cloud to manage its end-to-end customer, vehicle, and service operations.
+Click "Next" → "Create"
+Click "Activate"
+If pop-up appears, click "Ignore & Activate"
+Step 2: Explore General Slack Topic
+In agent details, go to "Topics" tab
+Click "General Slack" topic
+Review "Topic's Actions" to see capabilities
+Step 3: Connect Agent to Slack
+In Agent details, click "Connections" subtab
+Scroll to "Connections" section
+Click "Add"
+Configure:
+Connection Type: API
+Integration Name: Koa Cars Agent
+Connected App: Select "Slack"
+Click "Save"
+Step 4: Grant Agent Access
+Click "Agent Access" subtab
+Add "System Administrator" profile
+Save
+Phase 5: Install Agent in Slack (Task 3 continued)
+Step 1: Install from Slack Admin
+In Slack, click workspace name → Tools & settings → Organization settings
+In left sidebar: "Salesforce" → "Agentforce"
+Find "Koa Cars Agent" → click "Review"
+Review permissions → "Allow"
+Check box next to your workspace
+Click "Add To 1 Workspaces"
+Select "Everyone"
+Click "Save"
+Step 2: Surface Agent in Slack
+In Slack workspace, refresh (Ctrl/Cmd + R)
+Look for Agentforce icon in left navigation
+If not visible, check "Apps" section for "Koa Cars Agent"
+Step 3: Pin to Top Bar
+Click workspace name → Preferences → Navigation
+Under "App agents & Assistants", check "Koa Cars Agent"
+Agent now appears in top-right corner
+Phase 6: Test Agent Functionality
+Test 1: Create Customer Brief Canvas
+Click Koa Cars Agent (top-right or left nav)
+Type: Could you create a customer brief for Oldacres's Electra of Dallas and add that to a Canvas?
+Agent creates canvas with customer info
+Type: Can you elaborate the vehicle definition of all the vehicles owned by the customer and add it to the summary in the canvas?
+If asked, respond: Yes
+Review updated canvas
+Test 2: Work with Service Appointments
+Create channel: "service-interactions"
+In channel settings, go to "Agents" tab
+Add "Koa Cars Agent"
+Test these interactions:
+Conversation flow:
+
+Wait for response showing work order
+
+Wait for service appointment details
+
+Should show current date (December 29, 2025)
+
+Click "Confirm" button
+
+Review status options
+
+Click "Confirm" button
+
+Step 3: Verify in Salesforce
+Go back to Salesforce
+Navigate to Service Appointments
+Find the appointment for Oldacres's Electra of Dallas
+Verify:
+Due Date: January 4, 2026
+Status: In Progress
+Key Success Criteria:
+✅ Slack sandbox provisioned and connected
+✅ Salesforce-Slack connection active
+✅ Koa Cars Agent created and activated
+✅ Agent accessible in Slack (sidebar + top bar)
+✅ Customer brief canvas created successfully
+✅ Service appointment updated via Slack
+✅ Changes reflected in Salesforce records
+
+Troubleshooting Tips:
+If agent doesn't appear in Slack:
+
+Wait 2-3 minutes and refresh
+Check Agentforce tab in Slack admin
+Verify agent is activated in Salesforce
+If connection fails:
+
+Verify package installation completed
+Check user has correct permissions
+Re-approve connection in both systems
+If agent can't find records:
+
+Verify you're in correct org
+Check user has access to Automotive Cloud records
+Ensure Service Console app is accessible
