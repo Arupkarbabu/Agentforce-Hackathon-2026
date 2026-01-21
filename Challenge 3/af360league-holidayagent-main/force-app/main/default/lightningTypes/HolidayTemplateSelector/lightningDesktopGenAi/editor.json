@@ -1,0 +1,10 @@
+{
+  "editor" : {
+    "componentOverrides" : {
+      "$" : {
+        "definition" : "c/holidayTemplateSelector"
+      }
+    }
+  }
+}
+
